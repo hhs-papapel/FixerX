@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ab614a9435142b645b5164af5c9ab019
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - audioDrive: {fileID: 8300000, guid: 7e628f2dcd9522941a9c22955d1ae3c7, type: 3}
+  - audioIdle: {fileID: 8300000, guid: 5e08379448562d043b024e1648f69c2c, type: 3}
+  - audioDrift: {fileID: 8300000, guid: 29a47665634f03b4a9701f5af142ab81, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

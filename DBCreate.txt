@@ -1,0 +1,54 @@
+CREATE DATABASE `my_database` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+-- my_database.users definition
+
+CREATE TABLE `users` (
+  `idx` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `id` varchar(200) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `del` varchar(5) DEFAULT 'N',
+  PRIMARY KEY (`idx`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- my_database.board definition
+
+CREATE TABLE `board` (
+  `b_num` int NOT NULL AUTO_INCREMENT,
+  `u_idx` int NOT NULL,
+  `b_title` varchar(20) NOT NULL,
+  `b_content` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `b_date` varchar(250) NOT NULL,
+  PRIMARY KEY (`b_num`),
+  KEY `u_idx` (`u_idx`),
+  CONSTRAINT `board_ibfk_1` FOREIGN KEY (`u_idx`) REFERENCES `users` (`idx`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- my_database.commnet definition
+
+CREATE TABLE `commnet` (
+  `c_num` int NOT NULL AUTO_INCREMENT,
+  `u_idx` int NOT NULL,
+  `b_num` int NOT NULL,
+  `c_content` varchar(20) NOT NULL,
+  `b_date` varchar(250) NOT NULL,
+  PRIMARY KEY (`c_num`),
+  KEY `u_idx` (`u_idx`),
+  KEY `b_num` (`b_num`),
+  CONSTRAINT `commnet_ibfk_1` FOREIGN KEY (`u_idx`) REFERENCES `users` (`idx`),
+  CONSTRAINT `commnet_ibfk_2` FOREIGN KEY (`b_num`) REFERENCES `board` (`b_num`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- my_database.race_records definition
+
+CREATE TABLE `race_records` (
+  `r_num` int NOT NULL AUTO_INCREMENT,
+  `u_idx` int NOT NULL,
+  `r_map` int NOT NULL,
+  `r_time` varchar(6) NOT NULL,
+  `r_date` varchar(250) NOT NULL,
+  PRIMARY KEY (`r_num`),
+  KEY `u_idx` (`u_idx`),
+  CONSTRAINT `race_records_ibfk_1` FOREIGN KEY (`u_idx`) REFERENCES `users` (`idx`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
